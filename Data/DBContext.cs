@@ -16,6 +16,7 @@ namespace game_reviews_app.Data
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Favorite>().HasIndex(f => new { f.GameId, f.UserId }).IsUnique(); //users can't favorite a game twice.
+            modelBuilder.Entity<Game>().Property(g => g.Rating).HasPrecision(3, 2); // Set precision for rating to 3 digits total, 2 decimal places
         }
     }
 }

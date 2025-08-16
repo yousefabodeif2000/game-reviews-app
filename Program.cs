@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 DotNetEnv.Env.Load();
 
-var connectionString = Environment.GetEnvironmentVariable("DefaultConnection");
+var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

@@ -11,7 +11,7 @@
         public string Developer { get; set; } = string.Empty;
         public string Publisher { get; set; } = string.Empty;
         public string CoverImageUrl { get; set; } = string.Empty;
-        public decimal Rating { get; set; } = 0.0m;
+        public decimal Rating { get; set; }
 
         public ICollection<Review> Reviews { get; set; } = new List<Review>();
         public ICollection<Favorite> Favorites { get; set; } = new List<Favorite>();
