@@ -1,9 +1,16 @@
-DotNetEnv.Env.Load();
+using game_reviews_app.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+DotNetEnv.Env.Load();
+
+var connectionString = Environment.GetEnvironmentVariable("DefaultConnection");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<DBContext>(options =>
+    options.UseSqlServer(connectionString ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.")));
+
 
 var app = builder.Build();
 
