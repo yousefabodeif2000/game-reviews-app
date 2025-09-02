@@ -1,4 +1,5 @@
 ﻿using game_reviews_app.Data;
+using game_reviews_app.DTOs;
 using game_reviews_app.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,8 +18,16 @@ namespace game_reviews_app.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostReview(Review review)
+        public async Task<IActionResult> PostReview(ReviewsDTO reviewDTO)
         {
+            var review = new Review
+            {
+                GameId = reviewDTO.GameId,
+                UserId = reviewDTO.UserId,
+                Rating = reviewDTO.Rating,
+                Body = reviewDTO.Body,
+                CreatedAt = DateTime.UtcNow
+            };
             _context.Reviews.Add(review);
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetReview), new { id = review.Id }, review);

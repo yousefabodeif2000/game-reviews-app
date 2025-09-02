@@ -12,8 +12,8 @@ using game_reviews_app.Data;
 namespace game_reviews_app.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20250829201700_newCreation")]
-    partial class newCreation
+    [Migration("20250902094652_newMigration")]
+    partial class newMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -5,25 +5,25 @@
 namespace game_reviews_app.Migrations
 {
     /// <inheritdoc />
-    public partial class newCreation : Migration
+    public partial class updatedReviewsModel : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "Platform",
-                table: "Games",
-                type: "int",
-                nullable: false,
-                defaultValue: 0);
+            migrationBuilder.DropColumn(
+                name: "Title",
+                table: "Reviews");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Platform",
-                table: "Games");
+            migrationBuilder.AddColumn<string>(
+                name: "Title",
+                table: "Reviews",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "");
         }
     }
 }
