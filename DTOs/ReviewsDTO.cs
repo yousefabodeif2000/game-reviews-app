@@ -2,7 +2,6 @@
 {
     public class ReviewsDTO
     {
-        public int Id { get; set; }
         public int GameId { get; set; }
         public string UserId { get; set; }
         public int Rating { get; set; } // e.g., 1 to 5

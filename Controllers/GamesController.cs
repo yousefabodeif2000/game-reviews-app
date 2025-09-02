@@ -40,7 +40,7 @@ namespace game_reviews_app.Controllers
         /// <returns>Created game with the new game's location</returns>
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> PostGame(GamesDTO _game)
+        public async Task<IActionResult> PostGame([FromQuery] GamesDTO _game)
         {
             var game = new Game
             {
