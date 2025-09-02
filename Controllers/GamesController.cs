@@ -1,6 +1,7 @@
 ﻿using game_reviews_app.Data;
 using game_reviews_app.DTOs;
 using game_reviews_app.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -37,6 +38,7 @@ namespace game_reviews_app.Controllers
         /// </summary>
         /// <param name="_game"></param>
         /// <returns>Created game with the new game's location</returns>
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> PostGame(GamesDTO _game)
         {
@@ -53,6 +55,7 @@ namespace game_reviews_app.Controllers
 
             return CreatedAtAction(nameof(GetGameById), new { id = game.Id }, game);
         }
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutGame(int id, Game game)
         {
@@ -78,6 +81,7 @@ namespace game_reviews_app.Controllers
             }
             return NoContent();
         }
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteGame(int id)
         {

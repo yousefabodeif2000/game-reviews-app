@@ -1,5 +1,6 @@
 ﻿using game_reviews_app.Data;
 using game_reviews_app.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +16,8 @@ namespace game_reviews_app.Controllers
         {
             _context = context;
         }
+
+        [Authorize]
         [HttpPost("{userId}/{gameId}")]
         public async Task<IActionResult> PostFavorite(int userId, int gameId)
         {
@@ -44,6 +47,7 @@ namespace game_reviews_app.Controllers
             return Ok(favorites);
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteFavorite(int id)
         {

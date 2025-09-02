@@ -1,6 +1,7 @@
 ﻿using game_reviews_app.Data;
 using game_reviews_app.DTOs;
 using game_reviews_app.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +18,7 @@ namespace game_reviews_app.Controllers
             _context = context;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> PostReview(ReviewsDTO reviewDTO)
         {
@@ -49,6 +51,8 @@ namespace game_reviews_app.Controllers
                 .ToListAsync();
             return reviews;
         }
+
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteReview(int id)
         {
